@@ -13,6 +13,7 @@
         placeholder="Balance"></input>
     <button id="calculate" class="uk-button uk-button-primary uk-align-center">Calculate</button>
     <h2 id="answer" class="uk-text uk-text-center"></h2>
+    <h2 id="percent" class="uk-text uk-text-center"></h2>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.js"
         integrity="sha256-C2jrRUznldpQaeeMC9IGNf9PqAO3bOYtK1WoExSo+Pk=" crossorigin="anonymous"></script>
@@ -20,7 +21,10 @@
         function calc() {
             let amount = parseInt($("#amount").val());
             let bal = parseInt($("#bal").val());
-            $("#answer").html(`\$${1}`);
+            let x = Math.floor(Math.log(bal/amount+1)/Math.log(2));
+            $("#answer").html(`\$${x}`);
+            let p = Math.round(10000/2**x)/100;
+            $("#percent").html(`\${p}%`);
         }
 
         $("#calculate").click(calc)
