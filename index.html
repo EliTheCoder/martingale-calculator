@@ -24,7 +24,7 @@
             let x = Math.floor(Math.log(bal/amount+1)/Math.log(2));
             $("#answer").html(`${x} bets`);
             let p = Math.round(10000/2**x)/100;
-            $("#percent").html(`${p}%`);
+            $("#percent").html(`~${p}%`);
         }
 
         $("#calculate").click(calc)
