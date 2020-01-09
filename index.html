@@ -18,20 +18,9 @@
         integrity="sha256-C2jrRUznldpQaeeMC9IGNf9PqAO3bOYtK1WoExSo+Pk=" crossorigin="anonymous"></script>
     <script>
         function calc() {
-            let fullTurn = parseInt($("#fullTurn").val());
-            let comboA = parseInt($("#comboA").val());
-            let comboB = parseInt($("#comboB").val());
-            let comboC = parseInt($("#comboC").val());
-            let comboD = comboA - 7;
-            let comboE = comboB + 1;
-            if (comboD < 0) comboD += fullTurn;
-            if (comboE > fullTurn - 1) comboE -= fullTurn;
-            let RLRTicks = RLRCombo(comboA, comboB, comboC, fullTurn);
-            let LRLTicks = LRLCombo(comboD, comboE, comboC, fullTurn);
-            $("#RLRCombo").html(`RLR Combo: ${comboA} ${comboB} ${comboC}`);
-            $("#RLRTicks").html(`RLR Ticks: ${RLRTicks}`);
-            $("#LRLCombo").html(`LRL Combo: ${comboD} ${comboE} ${comboC}`);
-            $("#LRLTicks").html(`LRL Ticks: ${LRLTicks}`);
+            let amount = parseInt($("#amount").val());
+            let bal = parseInt($("#bal").val());
+            $("#answer").html(`\$${1}`);
         }
 
         $("#calculate").click(calc)
