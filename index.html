@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	</head>
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/css/uikit.css"
-        integrity="sha256-rLk75b53T4CKgcM98XjlcnsmEjP2whwKrqFqG8QoMOU=" crossorigin="anonymous" />
-</head>
+	<body>
+		<input id="amount" style="margin-top: 20px" type="number" placeholder="Initial bet" />
+		<input id="bal" type="number" placeholder="Balance" />
+		<a class="waves-effect waves-light btn">Calculate</button>
+		<h2 id="answer"></h2>
+		<h2 id="percent"></h2>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script>
+			function calc() {
+				let amount = parseInt($("#amount").val());
+				let bal = parseInt($("#bal").val());
+				let x = Math.floor(Math.log(bal / amount + 1) / Math.log(2));
+				$("#answer").html(`${x} bets`);
+				let p = Math.round(10000 / 2 ** x) / 100;
+				$("#percent").html(`~${p}%`);
+			}
 
-<body>
-    <input id="amount" style="margin-top: 20px" class="uk-input uk-align-center uk-text-center uk-width-1-2" type="number"
-        placeholder="Initial bet"></input>
-    <input id="bal" class="uk-input uk-align-center uk-text-center uk-width-1-2" type="number"
-        placeholder="Balance"></input>
-    <button id="calculate" class="uk-button uk-button-primary uk-align-center">Calculate</button>
-    <h2 id="answer" class="uk-text uk-text-center"></h2>
-    <h2 id="percent" class="uk-text uk-text-center"></h2>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.js"
-        integrity="sha256-C2jrRUznldpQaeeMC9IGNf9PqAO3bOYtK1WoExSo+Pk=" crossorigin="anonymous"></script>
-    <script>
-        function calc() {
-            let amount = parseInt($("#amount").val());
-            let bal = parseInt($("#bal").val());
-            let x = Math.floor(Math.log(bal/amount+1)/Math.log(2));
-            $("#answer").html(`${x} bets`);
-            let p = Math.round(10000/2**x)/100;
-            $("#percent").html(`~${p}%`);
-        }
-
-        $("#calculate").click(calc)
-    </script>
-</body>
+			$("#calculate").click(calc);
+		</script>
+	</body>
+</html>
